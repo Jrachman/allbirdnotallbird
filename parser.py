@@ -66,13 +66,13 @@ def gather_images(category, input, maxnum_of_images=None):
     # actions.perform()
 
     for _ in range(20):
+        # every iteration, you get approx 12-18 images every time
         set_of_srcs |= get_srcs(set_of_srcs)
         print(f"{len(set_of_srcs)} images captured for {category}('{input}')")
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(1.5)
 
     return set_of_srcs
-
 
 
 if __name__ == "__main__":
