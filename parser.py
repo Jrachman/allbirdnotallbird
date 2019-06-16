@@ -2,6 +2,7 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from bs4 import BeautifulSoup
 import time
 
@@ -36,13 +37,11 @@ def login_insta(driver):
     time.sleep(5)
 
     if check_exists_by_xpath(driver, "/html/body/div[3]"):
-        print("goodbye")
-        not_now = driver.find_element_by_xpath("/html/body")
-        not_now.send_keys(Keys.TAB)
-        not_now.send_keys(Keys.TAB)
-        not_now.send_keys(Keys.ENTER)
-    else:
-        print("hello")
+        actions = ActionChains(driver)
+        actions.click()
+        actions.send_keys(Keys.TAB * 2)
+        actions.send_keys(Keys.ENTER)
+        actions.perform()
 
 
 if __name__ == "__main__":
