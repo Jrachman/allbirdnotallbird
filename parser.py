@@ -50,7 +50,6 @@ def login_insta():
 
 
 def gather_images(category, input, maxnum_of_images=None):
-    # maxnum_of_images currently unused
     set_of_srcs = set()
     if category == "tag":
         suffix_url = f"/explore/tags/{input}/?hl=en"
@@ -65,9 +64,12 @@ def gather_images(category, input, maxnum_of_images=None):
     # actions.send_keys(Keys.RIGHT * 10)
     # actions.perform()
 
-    for _ in range(20):
+    while True:
+        # for now, assumes that maxnum_of_images is never None
         # every iteration, you get approx 12-18 images every time
         set_of_srcs |= get_srcs(set_of_srcs)
+        if len(set_of_srcs) >= maxnum_of_images:
+            break
         print(f"{len(set_of_srcs)} images captured for {category}('{input}')")
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(1.5)
