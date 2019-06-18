@@ -11,6 +11,6 @@ with open(f'{img_path}/train.txt', 'w') as outfile:
 
 for folder in folders:
     n = 0
-    for image in os.scandir(folder):
+    for file in os.scandir(folder):
         n += 1
-        os.rename(image.path, os.path.join(img_path, f'{n:06}.{"txt" if folder == "bbox_txt" else "jpg"}'))
+        os.rename(file.path, os.path.join(img_path, file.name))
