@@ -91,3 +91,5 @@ if __name__ == "__main__":
     print(set_of_srcs, len(set_of_srcs))
     for url in set_of_srcs:
         save_image_from_url(url, "images")
+
+    driver.quit()
