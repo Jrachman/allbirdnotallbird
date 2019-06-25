@@ -9,8 +9,8 @@ with open(f'{img_path}/train.txt', 'w') as outfile:
         img_path_full = f"{img_path}/{img}\n"
         outfile.write(img_path_full)
 
+# with open(f"{img_path}/test.txt", 'w') as outfile:
+
 for folder in folders:
-    n = 0
     for file in os.scandir(folder):
-        n += 1
         os.rename(file.path, os.path.join(img_path, file.name))
